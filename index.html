@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Linda's Health Tracker</title>
+    <script>
+        window.onload = function() {
+			console.log('window loaded successfully');
+            // Get the URL parameter "key"
+            const urlParams = new URLSearchParams(window.location.search);
+            const keyParam = urlParams.get('key');
+			console.log(keyParam)
+            
+            // Create the iframe element and set its attributes
+            const iframe = document.createElement('iframe');
+            iframe.setAttribute('id', 'myFrame');
+            iframe.setAttribute('frameborder', '0');
+            iframe.setAttribute('width', '100%');
+            iframe.setAttribute('height', '100%');
+			iframe.setAttribute('style', 'width:100%; height:900px;');
+            
+            // If the "key" parameter is present, update the iframe src with the key value
+            if (keyParam) {
+                iframe.src = 'https://script.google.com/macros/s/AKfycbzUc76nkVfb_yRQR59qK0tOMwSkr-vRjFCvjWk9s2-SvH-gsg8Q01Hh5JVt6q8tLR5H/exec?key=' + encodeURIComponent(keyParam);
+            } else {
+                iframe.src = 'https://script.google.com/macros/s/AKfycbzUc76nkVfb_yRQR59qK0tOMwSkr-vRjFCvjWk9s2-SvH-gsg8Q01Hh5JVt6q8tLR5H/exec';
+            }
+            
+            // Load the iframe
+            iframe.onload = function() {
+				console.log('Iframe loaded successfully');
+            };
+			
+			document.body.appendChild(iframe);
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>
